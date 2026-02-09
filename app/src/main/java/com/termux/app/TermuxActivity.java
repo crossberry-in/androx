@@ -568,6 +568,26 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         settingsButton.setOnClickListener(v -> {
             ActivityUtils.startActivity(this, new Intent(this, SettingsActivity.class));
         });
+        
+        ImageButton codeServerButton = findViewById(R.id.codeserver_button);
+        codeServerButton.setOnClickListener(v -> {
+            // Check if code-server is running by attempting to connect
+            new Thread(() -> {
+                try {
+                    java.net.Socket socket = new java.net.Socket("127.0.0.1", 8080);
+                    socket.close();
+                    // Code-server is running, open webview
+                    runOnUiThread(() -> {
+                        startActivity(new Intent(this, com.termux.app.activities.CodeServerActivity.class));
+                    });
+                } catch (Exception e) {
+                    // Code-server is not running, show dialog
+                    runOnUiThread(() -> {
+                        showCodeServerInstallDialog();
+                    });
+                }
+            }).start();
+        });
     }
 
     private void setNewSessionButtonView() {
@@ -748,6 +768,55 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                 .setNegativeButton(android.R.string.cancel, null).show();
         }
     }
+
+    private void showCodeServerInstallDialog() {
+        String message = "Code-server is not installed or not running.\n\n" +
+            "Would you like to run the installation script?\n\n" +
+            "This will:\n" +
+            "1. Install Ubuntu via proot-distro\n" +
+            "2. Install code-server\n" +
+            "3. Setup auto-start script\n\n" +
+            "Note: This may take several minutes.";
+
+        new AlertDialog.Builder(this)
+            .setTitle("Install Code-Server?")
+            .setMessage(message)
+            .setPositiveButton("Install Now", (dialog, which) -> installCodeServer())
+            .setNegativeButton("Cancel", null)
+            .show();
+    }
+
+    private void installCodeServer() {
+        // Create a terminal session to run the installation script
+        if (mTermuxService != null) {
+            // Create a session that runs the setup script
+            TermuxSession newTermuxSession = mTermuxService.createTermuxSession(
+                TermuxConstants.TERMUX_BIN_PREFIX_DIR_PATH + "/bash",
+                new String[] {
+                    "-c",
+                    "cd $HOME && if [ ! -f setup_codeserver.sh ]; then " +
+                    "echo 'Downloading setup script...' && " +
+                    "curl -L -o setup_codeserver.sh https://raw.githubusercontent.com/termux/scripts/main/setup_codeserver.sh 2>/dev/null || " +
+                    "echo 'Error: Could not download setup script'; " +
+                    "fi && " +
+                    "chmod +x setup_codeserver.sh && " +
+                    "./setup_codeserver.sh && " +
+                    "echo \"\\n\\nInstallation complete! Run 'source ~/.androx_codeserver_autostart' to start code-server\""
+                },
+                null,
+                mPreferences.getDefaultWorkingDirectory(),
+                false,
+                "Code-Server Install"
+            );
+            
+            if (newTermuxSession != null) {
+                TerminalSession newTerminalSession = newTermuxSession.getTerminalSession();
+                setCurrentSession(newTerminalSession);
+                getDrawer().closeDrawers();
+            }
+        }
+    }
+
     private void toggleKeepScreenOn() {
         if (mTerminalView.getKeepScreenOn()) {
             mTerminalView.setKeepScreenOn(false);

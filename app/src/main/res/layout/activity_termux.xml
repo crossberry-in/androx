@@ -57,6 +57,14 @@
                         android:background="@null"
                         android:contentDescription="@string/action_open_settings"
                         app:tint="?attr/termuxActivityDrawerImageTint" />
+                    <ImageButton
+                        android:id="@+id/codeserver_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_new_session"
+                        android:background="@null"
+                        android:contentDescription="Open Code Server"
+                        app:tint="?attr/termuxActivityDrawerImageTint" />
                 </LinearLayout>
 
                 <ListView
