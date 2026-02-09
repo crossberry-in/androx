@@ -11,6 +11,8 @@ permissions:
 jobs:
   dependency-submission:
     runs-on: ubuntu-latest
+    # Continue even if this fails as dependency graph may not be enabled
+    continue-on-error: true
     steps:
     - name: Checkout sources
       uses: actions/checkout@v6
@@ -21,3 +23,4 @@ jobs:
         java-version: 17
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@v5
+      continue-on-error: true
