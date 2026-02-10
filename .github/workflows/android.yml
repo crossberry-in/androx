@@ -111,7 +111,7 @@ jobs:
           fi
 
       - name: Upload APK artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: androx-${{ env.VERSION_TAG }}
           path: |
@@ -121,7 +121,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload build summary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-info-${{ matrix.package_variant }}
           path: |
@@ -166,7 +166,7 @@ jobs:
           ls -lh release-package/ >> $GITHUB_STEP_SUMMARY
       
       - name: Upload combined package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: androx-complete-package
           path: ./release-package/*
