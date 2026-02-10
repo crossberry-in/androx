@@ -51,6 +51,7 @@ import com.termux.shared.termux.interact.TextInputDialogUtils;
 import com.termux.shared.logger.Logger;
 import com.termux.shared.termux.TermuxUtils;
 import com.termux.shared.termux.settings.properties.TermuxAppSharedProperties;
+import com.termux.shared.termux.shell.command.runner.terminal.TermuxSession;
 import com.termux.shared.termux.theme.TermuxThemeUtils;
 import com.termux.shared.theme.NightMode;
 import com.termux.shared.view.ViewUtils;
@@ -804,14 +805,14 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                     "echo \"\\n\\nInstallation complete! Run 'source ~/.androx_codeserver_autostart' to start code-server\""
                 },
                 null,
-                mPreferences.getDefaultWorkingDirectory(),
+                mProperties.getDefaultWorkingDirectory(),
                 false,
                 "Code-Server Install"
             );
             
             if (newTermuxSession != null) {
                 TerminalSession newTerminalSession = newTermuxSession.getTerminalSession();
-                setCurrentSession(newTerminalSession);
+                mTermuxTerminalSessionActivityClient.setCurrentSession(newTerminalSession);
                 getDrawer().closeDrawers();
             }
         }
