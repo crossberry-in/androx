@@ -1,6 +1,6 @@
-package com.termux.shared.shell.command.result;
+package com.androx.shared.shell.command.result;
 
-import com.termux.shared.errors.Errno;
+import com.androx.shared.errors.Errno;
 
 /** The {@link Class} that defines ResultSender error messages and codes. */
 public class ResultSenderErrno extends Errno {

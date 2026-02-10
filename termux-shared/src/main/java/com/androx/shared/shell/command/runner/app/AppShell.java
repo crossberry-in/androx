@@ -1,4 +1,4 @@
-package com.termux.shared.shell.command.runner.app;
+package com.androx.shared.shell.command.runner.app;
 
 import android.content.Context;
 import android.system.ErrnoException;
@@ -9,17 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.common.base.Joiner;
-import com.termux.shared.R;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.shell.command.ExecutionCommand;
-import com.termux.shared.shell.command.environment.ShellEnvironmentUtils;
-import com.termux.shared.shell.command.result.ResultData;
-import com.termux.shared.errors.Errno;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.shell.command.ExecutionCommand.ExecutionState;
-import com.termux.shared.shell.command.environment.IShellEnvironment;
-import com.termux.shared.shell.ShellUtils;
-import com.termux.shared.shell.StreamGobbler;
+import com.androx.shared.R;
+import com.androx.shared.data.DataUtils;
+import com.androx.shared.shell.command.ExecutionCommand;
+import com.androx.shared.shell.command.environment.ShellEnvironmentUtils;
+import com.androx.shared.shell.command.result.ResultData;
+import com.androx.shared.errors.Errno;
+import com.androx.shared.logger.Logger;
+import com.androx.shared.shell.command.ExecutionCommand.ExecutionState;
+import com.androx.shared.shell.command.environment.IShellEnvironment;
+import com.androx.shared.shell.ShellUtils;
+import com.androx.shared.shell.StreamGobbler;
 
 import java.io.DataOutputStream;
 import java.io.File;

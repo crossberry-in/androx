@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/data/data/com.androx/files/usr/bin/bash
 
 # ---------- COLORS ----------
 RED='\033[1;31m'
@@ -82,7 +82,7 @@ echo -e "${CYAN}🌐 Open browser:${RESET} http://127.0.0.1:8080"
 # Create auto-start script for code-server
 AUTO_START_FILE="$HOME/.androx_codeserver_autostart"
 cat > "$AUTO_START_FILE" << 'EOF'
-#!/data/data/com.termux/files/usr/bin/bash
+#!/data/data/com.androx/files/usr/bin/bash
 
 # Check if code-server is already running
 if pgrep -f "code-server" > /dev/null; then

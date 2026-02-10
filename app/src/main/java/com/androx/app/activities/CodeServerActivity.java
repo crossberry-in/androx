@@ -1,4 +1,4 @@
-package com.termux.app.activities;
+package com.androx.app.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

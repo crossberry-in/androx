@@ -1,11 +1,11 @@
-package com.termux.shared.errors;
+package com.androx.shared.errors;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.markdown.MarkdownUtils;
+import com.androx.shared.logger.Logger;
+import com.androx.shared.markdown.MarkdownUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;

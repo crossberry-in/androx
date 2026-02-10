@@ -1,4 +1,4 @@
-package com.termux.view.textselection;
+package com.androx.view.textselection;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
@@ -13,9 +13,9 @@ import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.termux.view.R;
-import com.termux.view.TerminalView;
-import com.termux.view.support.PopupWindowCompatGingerbread;
+import com.androx.view.R;
+import com.androx.view.TerminalView;
+import com.androx.view.support.PopupWindowCompatGingerbread;
 
 @SuppressLint("ViewConstructor")
 public class TextSelectionHandleView extends View {

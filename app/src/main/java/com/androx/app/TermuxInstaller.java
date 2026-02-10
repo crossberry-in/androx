@@ -1,4 +1,4 @@
-package com.termux.app;
+package com.androx.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,18 +10,18 @@ import android.system.Os;
 import android.util.Pair;
 import android.view.WindowManager;
 
-import com.termux.R;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.termux.crash.TermuxCrashUtils;
-import com.termux.shared.termux.file.TermuxFileUtils;
-import com.termux.shared.interact.MessageDialogUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.markdown.MarkdownUtils;
-import com.termux.shared.errors.Error;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.shared.termux.TermuxUtils;
-import com.termux.shared.termux.shell.command.environment.TermuxShellEnvironment;
+import com.androx.R;
+import com.androx.shared.file.FileUtils;
+import com.androx.shared.termux.crash.TermuxCrashUtils;
+import com.androx.shared.termux.file.TermuxFileUtils;
+import com.androx.shared.interact.MessageDialogUtils;
+import com.androx.shared.logger.Logger;
+import com.androx.shared.markdown.MarkdownUtils;
+import com.androx.shared.errors.Error;
+import com.androx.shared.android.PackageUtils;
+import com.androx.shared.termux.TermuxConstants;
+import com.androx.shared.termux.TermuxUtils;
+import com.androx.shared.termux.shell.command.environment.TermuxShellEnvironment;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -33,10 +33,10 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import static com.termux.shared.termux.TermuxConstants.TERMUX_PREFIX_DIR;
-import static com.termux.shared.termux.TermuxConstants.TERMUX_PREFIX_DIR_PATH;
-import static com.termux.shared.termux.TermuxConstants.TERMUX_STAGING_PREFIX_DIR;
-import static com.termux.shared.termux.TermuxConstants.TERMUX_STAGING_PREFIX_DIR_PATH;
+import static com.androx.shared.termux.TermuxConstants.TERMUX_PREFIX_DIR;
+import static com.androx.shared.termux.TermuxConstants.TERMUX_PREFIX_DIR_PATH;
+import static com.androx.shared.termux.TermuxConstants.TERMUX_STAGING_PREFIX_DIR;
+import static com.androx.shared.termux.TermuxConstants.TERMUX_STAGING_PREFIX_DIR_PATH;
 
 /**
  * Install the Termux bootstrap packages if necessary by following the below steps:
@@ -335,7 +335,7 @@ final class TermuxInstaller {
                     // https://cs.android.com/android/platform/superproject/+/android-12.0.0_r32:frameworks/base/services/core/java/com/android/server/StorageManagerService.java;l=3796
                     // https://cs.android.com/android/platform/superproject/+/android-7.0.0_r36:frameworks/base/services/core/java/com/android/server/MountService.java;l=3053
 
-                    // Create "Android/data/com.termux" symlinks
+                    // Create "Android/data/com.androx" symlinks
                     File[] dirs = context.getExternalFilesDirs(null);
                     if (dirs != null && dirs.length > 0) {
                         for (int i = 0; i < dirs.length; i++) {
@@ -347,7 +347,7 @@ final class TermuxInstaller {
                         }
                     }
 
-                    // Create "Android/media/com.termux" symlinks
+                    // Create "Android/media/com.androx" symlinks
                     dirs = context.getExternalMediaDirs();
                     if (dirs != null && dirs.length > 0) {
                         for (int i = 0; i < dirs.length; i++) {
